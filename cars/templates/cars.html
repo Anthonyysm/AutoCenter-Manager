@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Meus Carros</title>
+</head>
+
+{% block content %}
+
+<body>
+    {% for car in cars %}
+    <h1>CARRO: {{ car.model }} - {{ car.id }}</h1>
+    {% endfor %}
+</body>
+<style>
+    body {
+        background-color: rgb(231, 196, 173);
+        font-family: Arial, sans-serif;
+    }
+</style>
+{% endblock %}
+
+</html>
