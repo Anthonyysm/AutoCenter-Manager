@@ -3,11 +3,10 @@ from cars.models import Car
 
 
 def cars_view(request):
-    cars = Car.objects.all()
-    print(request.GET.get('search'))
+    cars = Car.objects.all().order_by('brand__name')
+    search = request.GET.get('search')
 
-    return render(
-        request,
-        'cars.html',
-        {'cars': cars}
-    )
+    if search:
+        cars = cars.filter(model__icontains=search)
+
+    return render(request, 'cars.html', {'cars': cars})
