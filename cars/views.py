@@ -10,3 +10,7 @@ def cars_view(request):
         cars = cars.filter(model__icontains=search)
 
     return render(request, 'cars.html', {'cars': cars})
+
+
+def new_car_view(request):
+    pass
