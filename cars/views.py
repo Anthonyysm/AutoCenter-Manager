@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from cars.models import Car
 
 
@@ -13,4 +13,4 @@ def cars_view(request):
 
 
 def new_car_view(request):
-    pass
+    return HttpResponse('new car view')
