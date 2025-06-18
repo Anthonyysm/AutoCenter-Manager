@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from cars.models import Car
+from cars.forms import CarForm
 
 
 def cars_view(request):
@@ -13,4 +14,5 @@ def cars_view(request):
 
 
 def new_car_view(request):
-    return HttpResponse('new car view')
+    new_car_form = CarForm()
+    return render(request, 'new_car.html', { 'new_car_form': new_car_form })
