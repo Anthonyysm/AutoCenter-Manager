@@ -61,6 +61,13 @@ pip-log.txt
 pip-delete-this-directory.txt
 pyvenv.cfg
 
-# Arquivos de midia
-
-/media/
+# Ignorar apenas arquivos de mídia dentro da pasta media, independente da subpasta
+/media/**/*.jpg
+/media/**/*.jpeg
+/media/**/*.png
+/media/**/*.gif
+/media/**/*.mp4
+/media/**/*.mp3
+/media/**/*.pdf
+!/media/.gitkeep
+!/media/**/.gitkeep
