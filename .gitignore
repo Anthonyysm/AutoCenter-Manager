@@ -1,0 +1,75 @@
+# ▶️ Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+
+# ▶️ Virtualenv
+venv/
+.venv/
+
+# ▶️ Arquivos de log e temporários
+*.log
+*.pot
+*.pyc
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# ▶️ VS Code
+.vscode/
+
+# ▶️ Testes / cobertura
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.tox/
+pytest_cache/
+
+# ▶️ Django/Migrations (mantém pastas, ignora arquivos)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.log
+**/migrations/__pycache__/
+**/migrations/*.sqlite3
+# (Descomente abaixo se quiser ignorar os arquivos de migração também)
+# **/migrations/*.py
+
+# ▶️ Banco de dados local
+*.sqlite3
+*.db
+
+# ▶️ Arquivos de ambiente
+.env
+.env.*
+
+# ▶️ Ferramentas específicas
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+pyvenv.cfg
+
+# ▶️ Ignorar arquivos de mídia dentro da pasta media, independente da subpasta
+/media/**/*.jpg
+/media/**/*.jpeg
+/media/**/*.png
+/media/**/*.gif
+/media/**/*.mp4
+/media/**/*.mp3
+/media/**/*.pdf
+
+# Manter arquivos .gitkeep em pastas de mídia
+!/media/.gitkeep
+!/media/**/.gitkeep
