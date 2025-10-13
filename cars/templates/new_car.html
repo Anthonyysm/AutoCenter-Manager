@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="box" style="max-width: 600px; margin: auto;">
     {% csrf_token %}
-    <table>
-        {{ new_car_form.as_table }}
-    </table>
 
-    <input type="submit" value="Cadastrar" class="btn btn-primary">
+    {% for field in new_car_form %}
+    <div class="field has-text-centered">
+        <label class="label">{{ field.label }}</label>
+        <div class="control is-flex is-justify-content-center">
+            {{ field }}
+        </div>
+        {% if field.help_text %}
+        <p class="help is-flex is-justify-content-center">{{ field.help_text }}</p>
+        {% endif %}
+        {% for error in field.errors %}
+        <p class="help is-danger">{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <div class="field is-grouped is-justify-content-center">
+        <div class="control">
+            <button type="submit" class="button is-warning has-text-weight-bold">Cadastrar</button>
+        </div>
+    </div>
 </form>
-
 {% endblock %}
