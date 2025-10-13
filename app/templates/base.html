@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>{% block title %}Auto Center{% endblock %}</title>
+
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #f7f7f7;
             color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #0096c7;
-            color: #fff;
-            text-align: center;
         }
 
         footer {
@@ -26,79 +20,73 @@
             padding: 20px;
             text-align: center;
         }
-
-        nav {
-            background-color: #0096c7;
-            color: #fff;
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 15px;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #32bbe8;
-        }
-
-        nav ul li.active a {
-            background-color: #666;
-        }
-
-        nav ul li.active a:hover {
-            background-color: #999;
-        }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
+    <!-- Navbar -->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'cars_list' %}">
+                <strong>Auto Center</strong>
+            </a>
+
+            <!-- Botão hamburguer -->
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="mainNavbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="mainNavbar" class="navbar-menu">
+            <div class="navbar-start">
                 {% if user.is_authenticated %}
-                <li>Olá, {{ user.username }}</l>
-                <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+                <a class="navbar-item">Olá, {{ user.username }}</a>
+                <a class="navbar-item" href="{% url 'new_car' %}">Cadastrar Carro</a>
+                <a class="navbar-item" href="{% url 'cars_list' %}">Carros</a>
+                {% else %}
+                <a class="navbar-item" href="{% url 'cars_list' %}">Carros</a>
+                <a class="navbar-item" href="{% url 'register' %}">Cadastre-se</a>
+                <a class="navbar-item" href="{% url 'login' %}">Login</a>
                 {% endif %}
-                {% if not user.is_authenticated %}
-                <li><a href="{% url 'register' %}">Cadastre-se</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                {% endif %}
-
-                <li><a href="{% url 'cars_list' %}">Carros</a></li>
-
+            </div>
+            <div class="navbar-end">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Sair</a></li>
+                <a class="navbar-item has-text-weight-bold has-text-danger" href="{% url 'logout' %}">
+                    Sair
+                </a>
                 {% endif %}
-            </ul>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        {% block content %}
-        {% endblock %}
+    <main class="section">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Anthony Martins</p>
+        <p>&copy; 2025 Auto Center</p>
     </footer>
+
+    <!-- Script para ativar menu hamburguer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgers = Array.from(document.querySelectorAll('.navbar-burger'));
+            burgers.forEach(burger => {
+                burger.addEventListener('click', () => {
+                    const targetId = burger.dataset.target;
+                    const menu = document.getElementById(targetId);
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
