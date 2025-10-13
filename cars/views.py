@@ -6,7 +6,6 @@ from cars.forms import CarModelForm
 
 
 class CarsView(View):
-
     def get(self, request):
         cars = Car.objects.all().order_by('model')
         search = request.GET.get('search')
@@ -15,6 +14,7 @@ class CarsView(View):
             cars = cars.filter(model__icontains=search)
 
         return render(request, 'cars.html', {'cars': cars})
+
 
 class CarsListView(ListView):
     model = Car
@@ -28,8 +28,8 @@ class CarsListView(ListView):
             cars = cars.filter(model__icontains=search)
         return cars
 
-class NewCarView(View):
 
+class NewCarView(View):
     def get(self, request):
         new_car_form = CarModelForm()
         return render(request, 'new_car.html', {'new_car_form': new_car_form})
