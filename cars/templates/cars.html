@@ -2,37 +2,37 @@
 
 {% block content %}
 <form method="GET" action="{% url 'cars_list' %}" class="field has-addons is-justify-content-center my-5 px-4">
-    <div class="control is-expanded">
-        <input class="input" type="text" name="search" placeholder="Buscar carro...">
-    </div>
-    <div class="control">
-        <button class="button is-warning has-text-weight-bold" type="submit">Buscar</button>
-    </div>
+  <div class="control is-expanded">
+    <input class="input" type="text" name="search" placeholder="Buscar carro...">
+  </div>
+  <div class="control">
+    <button class="button is-warning has-text-weight-bold" type="submit">Buscar</button>
+  </div>
 </form>
 
 <div class="columns is-multiline is-variable is-4 px-4">
-    {% if cars %}
-    {% for car in cars %}
-    <div class="column is-one-third-desktop is-half-tablet">
-        <div class="box car-card"
-            style="background-color: #e3e1e1; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            <figure class="image is-4by3">
-                <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" style="object-fit: cover;">
-            </figure>
-            <h2 class="has-text-centered title is-5 mt-3">{{ car.brand }} {{ car.model }}</h2>
-            <p class="has-text-centered subtitle is-6">{{ car.factory_year }} - R$ {{ car.value }}</p>
-        </div>
+  {% if cars %}
+  {% for car in cars %}
+  <div class="column is-one-third-desktop is-half-tablet">
+    <div class="box car-card"
+      style="background-color: #e3e1e1; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <figure class="image is-4by3">
+        <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" style="object-fit: cover;">
+      </figure>
+      <h2 class="has-text-centered title is-5 mt-3">{{ car.brand }} {{ car.model }}</h2>
+      <p class="has-text-centered subtitle is-6">{{ car.factory_year }} - R$ {{ car.value }}</p>
     </div>
-    {% endfor %}
-    {% else %}
-    <p class="has-text-centered mt-6">Nenhum carro encontrado.</p>
-    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="has-text-centered mt-6">Nenhum carro encontrado.</p>
+  {% endif %}
 </div>
 
 <style>
-    .car-card:hover {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-        transform: translateY(-5px);
-    }
+  .car-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+  }
 </style>
 {% endblock %}
