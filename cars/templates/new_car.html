@@ -4,7 +4,7 @@
 <form method="post" enctype="multipart/form-data" class="box" style="max-width: 600px; margin: auto;">
     {% csrf_token %}
 
-    {% for field in new_car_form %}
+    {% for field in form %}
     <div class="field has-text-centered">
         <label class="label">{{ field.label }}</label>
         <div class="control is-flex is-justify-content-center">
