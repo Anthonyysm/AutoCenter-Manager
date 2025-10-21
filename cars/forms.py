@@ -35,3 +35,12 @@ class CarModelForm(forms.ModelForm):
                 'Formato de placa inválido! Digite no formato brasileiro (AAA-0000) ou no formato mercosul (AAA0A00)',
             )
         return plate
+
+    def clean_photo(self):
+        photo = self.cleaned_data.get('photo')
+        if not photo:
+            self.add_error(
+                'photo',
+                'Adicione uma foto do veículo',
+            )
+        return photo
