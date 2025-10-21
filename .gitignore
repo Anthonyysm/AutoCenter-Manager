@@ -26,6 +26,10 @@ Thumbs.db
 # ▶️ VS Code
 .vscode/
 
+# 🐍 Pycharm
+.idea/
+
+
 # ▶️ Testes / cobertura
 htmlcov/
 .coverage
