@@ -11,7 +11,7 @@
 
         <div class="columns is-multiline">
           {% for field in form %}
-          <div class="column is-half">
+          <div class="column is-half-tablet is-full-mobile">
             <div class="field">
               <label class="label">{{ field.label }}</label>
               <div class="control">
@@ -25,14 +25,14 @@
           {% endfor %}
         </div>
 
-        <div class="field is-grouped is-grouped-centered mt-5">
-          <div class="control">
-            <button type="submit" class="button is-dark is-success  is-medium">
+        <div class="field is-grouped is-grouped-centered mt-5 is-flex-wrap-wrap">
+          <div class="control m-2">
+            <button type="submit" class="button is-dark is-success is-medium is-fullwidth-mobile">
               Salvar Alterações
             </button>
           </div>
-          <div class="control">
-            <a href="{% url 'cars_list' %}" class="button is-danger is-medium">
+          <div class="control m-2">
+            <a href="{% url 'cars_list' %}" class="button is-danger is-medium is-fullwidth-mobile">
               Cancelar
             </a>
           </div>
@@ -48,6 +48,12 @@
   select,
   textarea {
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .button.is-fullwidth-mobile {
+      width: 100%;
+    }
   }
 </style>
 {% endblock %}
