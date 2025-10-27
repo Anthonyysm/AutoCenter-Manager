@@ -3,21 +3,29 @@
 {% block content %}
 <div class="columns is-centered my-5">
   <div class="column is-half-tablet is-one-third-desktop">
-    <div class="card" style="background-color: #e3e1e1; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); border-radius: 10px; overflow: hidden; transition: all 0.3s ease;">
+    <div class="card"
+      style="background-color: #e3e1e1; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); border-radius: 10px; overflow: hidden; transition: all 0.3s ease;">
       <div class="card-image">
         <figure class="image is-4by3">
           <img src="{{ object.photo.url }}" alt="{{ object.model }} - {{ object.brand }}" style="object-fit: cover;">
         </figure>
       </div>
-      <div class="card-content">
-        <h2 class="title is-4 has-text-centered">{{ object.brand }} {{ object.model }}</h2>
-        <p class="subtitle is-6 has-text-centered"><strong>Ano de fabricação:</strong> {{ object.factory_year }}</p>
-        <p class="subtitle is-6 has-text-centered"><strong>Ano do modelo:</strong> {{ object.model_year }}</p>
-        <p class="subtitle is-6 has-text-centered"><strong>Placa:</strong> {{ object.plate }}</p>
-        <p class="subtitle is-6 has-text-centered"><strong>Preço:</strong> R$ {{ object.value }}</p>
+      <div class="card-content has-text-centered">
+        <h2 class="title is-4">{{ object.brand }} {{ object.model }}</h2>
+        <p class="subtitle is-6"><strong>Ano de fabricação:</strong> {{ object.factory_year }}</p>
+        <p class="subtitle is-6"><strong>Ano do modelo:</strong> {{ object.model_year }}</p>
+        <p class="subtitle is-6"><strong>Placa:</strong> {{ object.plate }}</p>
+        <p class="subtitle is-6"><strong>Preço:</strong> R$ {{ object.value }}</p>
+
+        {% if user.is_authenticated %}
+        <div class="mt-4">
+          <a href="{% url 'car_update' pk=object.pk %}" class="button is-info is-fullwidth is-rounded">
+            <span>Editar Carro</span>
+          </a>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

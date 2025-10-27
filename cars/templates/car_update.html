@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="box">
+      <h1 class="title has-text-centered">Editar Carro</h1>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="columns is-multiline">
+          {% for field in form %}
+          <div class="column is-half">
+            <div class="field">
+              <label class="label">{{ field.label }}</label>
+              <div class="control">
+                {{ field }}
+              </div>
+              {% if field.errors %}
+              <p class="help is-danger">{{ field.errors|striptags }}</p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="field is-grouped is-grouped-centered mt-5">
+          <div class="control">
+            <button type="submit" class="button is-dark is-success  is-medium">
+              Salvar Alterações
+            </button>
+          </div>
+          <div class="control">
+            <a href="{% url 'cars_list' %}" class="button is-danger is-medium">
+              Cancelar
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+  }
+</style>
+{% endblock %}
