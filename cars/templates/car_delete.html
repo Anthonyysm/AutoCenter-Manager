@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered mt-6">
+            <div class="column is-half">
+                <div class="box" style="background-color: #e3e1e1;">
+                    <h1 class="title has-text-centered has-text-dark">Deletar Carro</h1>
+                    <p class="has-text-centered mb-5">
+                        Tem certeza que deseja deletar o carro
+                        <strong>{{ object.brand }} {{ object.model }}</strong>?
+                    </p>
+
+                    <form method="post" class="has-text-centered">
+                        {% csrf_token %}
+                        <div class="buttons is-centered mt-4">
+                            <button type="submit" class="button is-danger has-text-weight-bold">
+                                <span class="icon">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                                <span>Deletar Carro</span>
+                            </button>
+                            <a href="{% url 'car_detail' pk=object.pk %}"
+                                class="button is-warning has-text-weight-bold">
+                                Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .button.is-warning:hover {
+        background-color: #e0a800;
+    }
+</style>
+{% endblock %}
