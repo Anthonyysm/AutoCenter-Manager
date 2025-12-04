@@ -6,7 +6,12 @@
     <input class="input" type="text" name="search" placeholder="Buscar carro...">
   </div>
   <div class="control">
-    <button class="button is-warning has-text-weight-bold" type="submit">Buscar</button>
+    <button class="button is-warning has-text-weight-bold" type="submit">
+      <span class="icon">
+        <i class="fas fa-search"></i>
+      </span>
+      <span>Buscar</span>
+    </button>
   </div>
 </form>
 
@@ -15,19 +20,36 @@
   {% for car in cars %}
   <div class="column is-one-third-desktop is-half-tablet">
     <a href="{% url 'car_detail' car.pk %}">
-    <div class="box car-card"
-      style="background-color: #e3e1e1; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-      <figure class="image is-4by3">
-        <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" style="object-fit: cover;">
-      </figure>
-      <h2 class="has-text-centered title is-5 mt-3">{{ car.brand }} {{ car.model }}</h2>
-      <p class="has-text-centered subtitle is-6">{{ car.factory_year }} - R$ {{ car.value }}</p>
-    </div>
+      <div class="box car-card"
+        style="background-color: #e3e1e1; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <figure class="image is-4by3">
+          <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" style="object-fit: cover;">
+        </figure>
+        <h2 class="has-text-centered title is-5 mt-3">
+          {{ car.brand }} {{ car.model }}
+        </h2>
+        <p class="has-text-centered subtitle is-6">
+          <span class="icon is-small has-text-grey-dark">
+            <i class="fas fa-calendar"></i>
+          </span>
+          {{ car.factory_year }}
+          &nbsp;—&nbsp;
+          <span class="icon is-small has-text-success">
+            <i class="fas fa-tag"></i>
+          </span>
+          R$ {{ car.value }}
+        </p>
+      </div>
     </a>
   </div>
   {% endfor %}
   {% else %}
-  <p class="has-text-centered mt-6">Nenhum carro encontrado.</p>
+  <p class="has-text-centered mt-6">
+    <span class="icon is-large has-text-grey-light">
+      <i class="fas fa-car-crash"></i>
+    </span><br>
+    Nenhum carro encontrado.
+  </p>
   {% endif %}
 </div>
 
