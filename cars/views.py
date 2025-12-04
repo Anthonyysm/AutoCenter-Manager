@@ -63,5 +63,3 @@ class CarDeleveView(DeleteView):
     model = Car
     template_name = 'car_delete.html'
     success_url = '/cars/'
-
-    #19:16
