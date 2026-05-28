@@ -23,3 +23,11 @@ class Car(models.Model):
 
     def __str__(self):
         return f'{self.brand} {self.model} ({self.model_year})'
+
+class CarInventory(models.Model):
+    cars_count = models.IntegerField()
+    cars_value = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
