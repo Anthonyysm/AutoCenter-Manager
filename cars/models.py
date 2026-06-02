@@ -20,6 +20,7 @@ class Car(models.Model):
     plate = models.CharField(max_length=16, blank=True, null=True)
     value = models.FloatField(blank=True, null=True)
     photo = models.ImageField(upload_to='cars/', blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.brand} {self.model} ({self.model_year})'

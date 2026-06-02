@@ -26,6 +26,14 @@
           </span>
           <strong>Preço:</strong> R$ {{ object.value }}
         </p>
+        {% if object.bio %}
+        <p class="subtitle is-6">
+          <span class="icon is-small has-text-info">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <strong>Descrição:</strong> {{ object.bio }}
+        </p>
+        {% endif %}
 
         {% if user.is_authenticated %}
         <div class="mt-4">
