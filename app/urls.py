@@ -2,11 +2,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 from cars.views import NewCarCreateView, CarsListView, CarDetailView, CarUpdateView, CarDeleveView
 from accounts.views import register_view, login_view, logout_view
 
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/cars/'), name='root'),
     path('admin/', admin.site.urls),
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
