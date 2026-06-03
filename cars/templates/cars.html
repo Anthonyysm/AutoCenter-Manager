@@ -22,9 +22,16 @@
     <a href="{% url 'car_detail' car.pk %}">
       <div class="box car-card"
         style="background-color: #e3e1e1; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        {% if car.photo %}
         <figure class="image is-4by3">
           <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" style="object-fit: cover;">
         </figure>
+        {% else %}
+        <figure
+          class="image is-4by3 has-background-grey-lighter is-flex is-justify-content-center is-align-items-center">
+          <span class="has-text-grey font-weight-bold is-uppercase">Sem Foto</span>
+        </figure>
+        {% endif %}
         <h2 class="has-text-centered title is-5 mt-3">
           {{ car.brand }} {{ car.model }}
         </h2>
